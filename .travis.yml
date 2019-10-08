@@ -14,5 +14,9 @@ after_success:
   - docker build -t robggarcia84/multi-server-rob ./server 
   - docker build -t robggarcia84/multi-worker-rob ./worker
   # Log in to the Docker CLI
-  
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to DockerHub
+  - docker push robggarcia84/multi-client-rob
+  - docker push robggarcia84/multi-nginx-rob
+  - docker push robggarcia84/multi-server-rob
+  - docker push robggarcia84/multi-worker-rob
