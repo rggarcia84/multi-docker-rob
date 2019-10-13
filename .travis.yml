@@ -20,3 +20,16 @@ after_success:
   - docker push robggarcia84/multi-nginx-rob
   - docker push robggarcia84/multi-server-rob
   - docker push robggarcia84/multi-worker-rob
+
+deploy:
+  provider: elasticbeanstalk
+  region: eu-west-1
+  app: multi-docker-rob
+  env: MultiDockerRob-env
+  bucket_name: elasticbeanstalk-eu-west-1-606143462493
+  bucket_path: multi-docker-rob
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
